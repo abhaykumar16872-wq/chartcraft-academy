@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Courses | ChartCraft Academy</title>
+  <meta name="description" content="Explore all 11 technical analysis courses at ChartCraft Academy. Learn candlesticks, support and resistance, SMC, ICT concepts, and Fibonacci.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ChartCraft Academy Home">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+        </div>
+        <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link active">Courses</a>
+        <a href="index.html#learning-path" class="nav-link">Learning Path</a>
+        <a href="progress.html" class="nav-link">Progress</a>
+        <a href="glossary.html" class="nav-link">Glossary</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <button class="search-trigger" aria-label="Search Academy" title="Search (Ctrl + K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span style="font-size: 0.85rem;">Search</span>
+          <span class="search-shortcut">Ctrl K</span>
+        </button>
+
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <!-- Populated by script.js -->
+        </button>
+
+        <a href="lessons.html?course=course-1&lesson=1" class="btn btn-primary btn-sm">
+          Start Learning
+        </a>
+
+        <button class="btn-icon mobile-menu-btn" aria-label="Open mobile menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="courses.html" class="nav-link active">All 11 Courses</a>
+    <a href="index.html#learning-path" class="nav-link">Learning Roadmap</a>
+    <a href="progress.html" class="nav-link">My Progress Dashboard</a>
+    <a href="glossary.html" class="nav-link">Trading Glossary</a>
+    <a href="about.html" class="nav-link">About Academy</a>
+  </div>
+
+  <main>
+    <!-- Course Catalog Header -->
+    <section class="section" style="padding: 3.5rem 0 2rem;">
+      <div class="container">
+        <div class="section-header" style="text-align: left; max-width: 800px; margin-bottom: 2rem;">
+          <span class="section-tag">Complete Curriculum</span>
+          <h1 class="section-title">Educational Courses</h1>
+          <p class="section-subtitle">
+            Browse our full catalog of 11 structured modules. Every course is self-paced, equipped with custom vector illustrations, and tracks your progress automatically.
+          </p>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="course-filters" style="background-color: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); margin-bottom: 2.5rem;">
+          <div style="flex: 1; min-width: 250px;">
+            <div style="position: relative;">
+              <input type="text" id="courseCatalogSearch" placeholder="Search course by name, topic, or keyword..." 
+                     style="width: 100%; padding: 0.65rem 1rem 0.65rem 2.5rem; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary); outline: none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%);">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-right: 0.25rem;">Difficulty:</span>
+            <button class="filter-btn active" data-difficulty="all">All</button>
+            <button class="filter-btn" data-difficulty="Beginner">Beginner</button>
+            <button class="filter-btn" data-difficulty="Intermediate">Intermediate</button>
+            <button class="filter-btn" data-difficulty="Advanced">Advanced</button>
+          </div>
+        </div>
+
+        <!-- Courses Grid (11 Courses) -->
+        <div class="courses-grid" id="allCoursesCatalogGrid">
+          <!-- Populated dynamically via courses.js and script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Disclaimer -->
+    <section class="container">
+      <div class="disclaimer-banner">
+        <div class="disclaimer-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="disclaimer-text">
+          <h4>Educational Platform Notice</h4>
+          <p>
+            ChartCraft Academy provides pure technical analysis education. We do not sell signals, recommend specific financial instruments, or promise trading profits. Risk management and capital preservation should always be your highest priority.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+              <polyline points="16 7 22 7 22 13"></polyline>
+            </svg>
+          </div>
+          <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+        </a>
+        <p>"Read the Market. Understand the Structure. Trade with Knowledge."</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="courses.html" class="footer-link">Courses</a>
+          <a href="progress.html" class="footer-link">Progress</a>
+          <a href="glossary.html" class="footer-link">Glossary</a>
+          <a href="about.html" class="footer-link">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <div class="footer-links">
+          <a href="courses.html" class="footer-link">Foundations</a>
+          <a href="courses.html" class="footer-link">Market Structure</a>
+          <a href="courses.html" class="footer-link">Institutional Concepts</a>
+          <a href="courses.html" class="footer-link">Strategy &amp; Risk</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Academy</h4>
+        <div class="footer-links">
+          <a href="about.html" class="footer-link">Mission &amp; Values</a>
+          <a href="about.html#disclaimer" class="footer-link">Disclaimer</a>
+          <a href="about.html#contact" class="footer-link">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ChartCraft Academy. All rights reserved.</div>
+      <div>Strictly an Educational Platform • Not Financial Advice</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/progress.js"></script>
+  <script src="js/courses.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentDifficulty = 'all';
+      let currentQuery = '';
+
+      function refreshCatalog() {
+        renderCourseCards('allCoursesCatalogGrid', currentDifficulty, 'all', currentQuery);
+      }
+
+      refreshCatalog();
+
+      // Search input listener
+      const searchInput = document.getElementById('courseCatalogSearch');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value;
+          refreshCatalog();
+        });
+      }
+
+      // Difficulty buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentDifficulty = btn.getAttribute('data-difficulty');
+          refreshCatalog();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

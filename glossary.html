@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trading Glossary | ChartCraft Academy</title>
+  <meta name="description" content="Comprehensive dictionary of technical analysis terms, price action concepts, SMC, ICT vocabulary, and market mechanics explained in simple English.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ChartCraft Academy Home">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+        </div>
+        <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="index.html#learning-path" class="nav-link">Learning Path</a>
+        <a href="progress.html" class="nav-link">Progress</a>
+        <a href="glossary.html" class="nav-link active">Glossary</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <button class="search-trigger" aria-label="Search Academy" title="Search (Ctrl + K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span style="font-size: 0.85rem;">Search</span>
+        </button>
+
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <!-- Populated by script.js -->
+        </button>
+
+        <a href="lessons.html?course=course-1&lesson=1" class="btn btn-primary btn-sm">
+          Start Learning
+        </a>
+
+        <button class="btn-icon mobile-menu-btn" aria-label="Open mobile menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="courses.html" class="nav-link">All 11 Courses</a>
+    <a href="index.html#learning-path" class="nav-link">Learning Roadmap</a>
+    <a href="progress.html" class="nav-link">My Progress Dashboard</a>
+    <a href="glossary.html" class="nav-link active">Trading Glossary</a>
+    <a href="about.html" class="nav-link">About Academy</a>
+  </div>
+
+  <main>
+    <section class="section" style="padding: 3.5rem 0 2rem;">
+      <div class="container">
+        <!-- Header -->
+        <div class="section-header" style="text-align: left; max-width: 800px; margin-bottom: 2rem;">
+          <span class="section-tag">Reference Guide</span>
+          <h1 class="section-title">Technical Analysis Glossary</h1>
+          <p class="section-subtitle">
+            Demystifying trading terminology. Simple definitions, practical chart examples, and related conceptual links without financial jargon or hype.
+          </p>
+        </div>
+
+        <!-- Controls: Search & Alphabet Filter -->
+        <div class="glossary-controls">
+          <div style="background-color: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
+            <div style="flex: 1; min-width: 250px; position: relative;">
+              <input type="text" id="glossarySearchInput" placeholder="Filter terms by keyword or concept..." 
+                     style="width: 100%; padding: 0.65rem 1rem 0.65rem 2.5rem; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary); outline: none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%);">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="filter-btn active" data-category="all">All Categories</button>
+              <button class="filter-btn" data-category="Foundations">Foundations</button>
+              <button class="filter-btn" data-category="Structure">Structure</button>
+              <button class="filter-btn" data-category="Institutional">Institutional</button>
+              <button class="filter-btn" data-category="Strategy">Strategy</button>
+            </div>
+          </div>
+
+          <!-- A-Z Alphabet Filter Navigation -->
+          <div class="glossary-alpha-nav" id="alphabetNav">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Glossary Terms Grid -->
+        <div class="glossary-grid" id="glossaryGrid">
+          <!-- Populated via script from courses.js TradingGlossary -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Educational Disclaimer -->
+    <section class="container">
+      <div class="disclaimer-banner">
+        <div class="disclaimer-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="disclaimer-text">
+          <h4>Analytical Framework Notice</h4>
+          <p>
+            Glossary terms such as "Stop Hunt" and "Order Block" represent educational market models for understanding liquidity distribution. They are analytical frameworks and should not be construed as claims of unfair manipulation or guaranteed trading profits.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+              <polyline points="16 7 22 7 22 13"></polyline>
+            </svg>
+          </div>
+          <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+        </a>
+        <p>"Read the Market. Understand the Structure. Trade with Knowledge."</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="courses.html" class="footer-link">All 11 Courses</a>
+          <a href="progress.html" class="footer-link">Progress</a>
+          <a href="glossary.html" class="footer-link">Glossary</a>
+          <a href="about.html" class="footer-link">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Key Terms</h4>
+        <div class="footer-links">
+          <a href="#term-Candlestick" class="footer-link">Candlestick</a>
+          <a href="#term-Market%20Structure" class="footer-link">Market Structure</a>
+          <a href="#term-Order%20Block" class="footer-link">Order Block</a>
+          <a href="#term-Fair%20Value%20Gap" class="footer-link">Fair Value Gap</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+          Educational glossary only. Not financial or investment advice.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ChartCraft Academy. All rights reserved.</div>
+      <div>Pure Technical Analysis Education</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/progress.js"></script>
+  <script src="js/courses.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentQuery = '';
+      let currentCategory = 'all';
+      let currentLetter = 'ALL';
+
+      const alphabetNav = document.getElementById('alphabetNav');
+      const alphabet = ['ALL', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')];
+
+      alphabetNav.innerHTML = alphabet.map(letter => `
+        <button class="alpha-btn ${letter === 'ALL' ? 'active' : ''}" data-letter="${letter}">
+          ${letter}
+        </button>
+      `).join('');
+
+      alphabetNav.querySelectorAll('.alpha-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          alphabetNav.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentLetter = btn.getAttribute('data-letter');
+          renderGlossary();
+        });
+      });
+
+      // Category filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.getAttribute('data-category');
+          renderGlossary();
+        });
+      });
+
+      // Search input
+      const searchInput = document.getElementById('glossarySearchInput');
+      searchInput.addEventListener('input', (e) => {
+        currentQuery = e.target.value;
+        renderGlossary();
+      });
+
+      function renderGlossary() {
+        if (typeof TradingGlossary === 'undefined') return;
+        const grid = document.getElementById('glossaryGrid');
+
+        let filtered = TradingGlossary;
+
+        if (currentCategory !== 'all') {
+          filtered = filtered.filter(item => item.category === currentCategory);
+        }
+
+        if (currentLetter !== 'ALL') {
+          filtered = filtered.filter(item => item.term.toUpperCase().startsWith(currentLetter));
+        }
+
+        if (currentQuery.trim()) {
+          const q = currentQuery.toLowerCase().trim();
+          filtered = filtered.filter(item => 
+            item.term.toLowerCase().includes(q) || 
+            item.def.toLowerCase().includes(q) ||
+            item.related.some(r => r.toLowerCase().includes(q))
+          );
+        }
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+              <p style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">No glossary terms matched your filter.</p>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">Try selecting "ALL" or clearing your search box.</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Sort alphabetically
+        filtered.sort((a, b) => a.term.localeCompare(b.term));
+
+        grid.innerHTML = filtered.map(item => `
+          <div class="glossary-card" id="term-${encodeURIComponent(item.term)}">
+            <div class="glossary-term">
+              <span>${escapeHtml(item.term)}</span>
+              <span class="badge ${item.category === 'Foundations' ? 'badge-blue' : item.category === 'Structure' ? 'badge-teal' : item.category === 'Institutional' ? 'badge-amber' : 'badge-green'}">
+                ${item.category}
+              </span>
+            </div>
+            <p class="glossary-def">${escapeHtml(item.def)}</p>
+            <div class="glossary-example">
+              <strong>Example:</strong> ${escapeHtml(item.example)}
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-subtle);">
+              <div class="glossary-related">
+                ${item.related.map(r => `<span style="font-size: 0.72rem; padding: 0.15rem 0.45rem; background: var(--bg-surface); border-radius: 4px; color: var(--text-muted);">${escapeHtml(r)}</span>`).join('')}
+              </div>
+              ${item.courseId ? `
+                <a href="course-details.html?course=${item.courseId}" class="btn btn-outline btn-sm" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;">
+                  Study &rarr;
+                </a>
+              ` : ''}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      renderGlossary();
+    });
+  </script>
+</body>
+</html>

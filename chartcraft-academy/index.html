@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChartCraft Academy | Master Technical Analysis & Market Structure</title>
+  <meta name="description" content="ChartCraft Academy is an educational platform designed to teach Technical Analysis, market structure, candlesticks, SMC, and Fibonacci through structured lessons.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ChartCraft Academy Home">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+        </div>
+        <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="#learning-path" class="nav-link">Learning Path</a>
+        <a href="progress.html" class="nav-link">Progress</a>
+        <a href="glossary.html" class="nav-link">Glossary</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <button class="search-trigger" aria-label="Search Academy" title="Search (Ctrl + K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span style="font-size: 0.85rem;">Search</span>
+          <span class="search-shortcut">Ctrl K</span>
+        </button>
+
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <!-- Populated by script.js -->
+        </button>
+
+        <a href="lessons.html?course=course-1&lesson=1" class="btn btn-primary btn-sm">
+          Start Learning
+        </a>
+
+        <button class="btn-icon mobile-menu-btn" aria-label="Open mobile menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="courses.html" class="nav-link">All 11 Courses</a>
+    <a href="#learning-path" class="nav-link">Learning Roadmap</a>
+    <a href="progress.html" class="nav-link">My Progress Dashboard</a>
+    <a href="glossary.html" class="nav-link">Trading Glossary</a>
+    <a href="about.html" class="nav-link">About Academy</a>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+      <a href="lessons.html?course=course-1&lesson=1" class="btn btn-primary">Start Learning Now</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            100% Free Educational Platform • No Broker Ads • No Hype
+          </div>
+          <h1 class="hero-title">
+            Master Technical Analysis. <br>
+            <span class="text-gradient">One Concept at a Time.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Learn candlesticks, market structure, liquidity, SMC, ICT concepts, Fibonacci, supply &amp; demand, and multi-timeframe analysis through structured lessons designed for beginners.
+          </p>
+          <div class="hero-buttons">
+            <a href="lessons.html?course=course-1&lesson=1" class="btn btn-primary" id="heroStartLearningBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Start Learning
+            </a>
+            <a href="courses.html" class="btn btn-secondary" id="heroExploreCoursesBtn">
+              Explore Courses
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h4>11</h4>
+              <p>Full Structured Courses</p>
+            </div>
+            <div class="stat-item">
+              <h4>110+</h4>
+              <p>Illustrated Lessons &amp; Quizzes</p>
+            </div>
+            <div class="stat-item">
+              <h4>11 Levels</h4>
+              <p>Foundations to Strategy</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TA Educational Diagram -->
+        <div class="hero-diagram-card">
+          <div class="diagram-header">
+            <div class="diagram-title">
+              <span class="diagram-pulse"></span>
+              Technical Analysis Structure Map
+            </div>
+            <span class="badge badge-teal">Educational Model</span>
+          </div>
+          <div class="svg-diagram-wrapper">
+            <svg viewBox="0 0 460 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- S/R lines -->
+              <line x1="20" y1="50" x2="440" y2="50" stroke="var(--bearish)" stroke-width="1.5" stroke-dasharray="4 4" />
+              <text x="25" y="42" fill="var(--bearish)" font-size="10" font-weight="700">Resistance / Supply Zone</text>
+              
+              <line x1="20" y1="210" x2="440" y2="210" stroke="var(--bullish)" stroke-width="1.5" stroke-dasharray="4 4" />
+              <text x="25" y="225" fill="var(--bullish)" font-size="10" font-weight="700">Support / Demand Zone</text>
+
+              <!-- Fibonacci 61.8% Golden Pocket zone -->
+              <rect x="20" y="130" width="420" height="22" fill="rgba(245, 158, 11, 0.12)" stroke="var(--warning)" stroke-width="0.8" stroke-dasharray="3 2" />
+              <text x="350" y="145" fill="var(--warning)" font-size="9" font-weight="700">61.8% Golden Pocket</text>
+
+              <!-- Price path -->
+              <path d="M 30 205 L 85 110 L 120 155 L 210 50 L 255 138 L 330 65 L 360 100 L 420 30" 
+                    stroke="var(--accent-primary)" stroke-width="3" fill="none" stroke-linecap="round" />
+
+              <!-- Structural labels -->
+              <circle cx="85" cy="110" r="4" fill="var(--text-primary)" />
+              <text x="85" y="98" fill="var(--text-primary)" font-size="10" font-weight="700" text-anchor="middle">H</text>
+
+              <circle cx="120" cy="155" r="4" fill="var(--bullish)" />
+              <text x="120" y="175" fill="var(--bullish)" font-size="10" font-weight="700" text-anchor="middle">HL</text>
+
+              <circle cx="210" cy="50" r="4" fill="var(--accent-primary)" />
+              <text x="210" y="38" fill="var(--accent-primary)" font-size="10" font-weight="700" text-anchor="middle">HH</text>
+
+              <!-- Break of Structure annotation -->
+              <line x1="85" y1="110" x2="210" y2="110" stroke="var(--accent-teal)" stroke-dasharray="2 2" stroke-width="1.2" />
+              <text x="150" y="105" fill="var(--accent-teal)" font-size="9" font-weight="700">BOS</text>
+
+              <circle cx="255" cy="138" r="5" fill="var(--warning)" />
+              <text x="255" y="172" fill="var(--warning)" font-size="10" font-weight="700" text-anchor="middle">HL (Retest)</text>
+
+              <!-- Candlestick cluster mini -->
+              <g transform="translate(385, 30)">
+                <line x1="12" y1="5" x2="12" y2="45" stroke="var(--bullish)" stroke-width="1.5" />
+                <rect x="7" y="12" width="10" height="22" rx="1" fill="var(--bullish)" />
+              </g>
+            </svg>
+          </div>
+          <div class="diagram-caption">
+            Conceptual model showing Support/Resistance, Market Structure (HH, HL, BOS), and Fibonacci confluence.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Props / Why Pure Education -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Educational Integrity</span>
+          <h2 class="section-title">Why ChartCraft Academy?</h2>
+          <p class="section-subtitle">
+            Most online trading content is designed to sell broker sign-ups or subscription signals. We focus strictly on fundamental knowledge, math, and market mechanics.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Pure Education, Zero Hype</h3>
+            <p>No deposit promotions, no fake profit screenshots, and no signal rooms. Just verified technical analysis concepts broken down in plain English.</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3>Structured 11-Level Roadmap</h3>
+            <p>Move step-by-step from candlestick basics to price action, market structure, liquidity sweeps, SMC, ICT frameworks, and full strategy plans.</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>Interactive SVG Visuals</h3>
+            <p>Every single lesson features crisp, custom vector diagrams illustrating candlestick anatomy, order blocks, Fair Value Gaps, and liquidity runs.</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>Quizzes &amp; Saved Progress</h3>
+            <p>Test your understanding with practice quizzes after every lesson. Your progress is saved automatically in your browser—refresh anytime without losing data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Path Roadmap Section -->
+    <section class="section" id="learning-path">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Structured Roadmap</span>
+          <h2 class="section-title">The Complete Learning Journey</h2>
+          <p class="section-subtitle">
+            Follow our 11-level sequential roadmap designed to take you from total beginner to systematic analytical fluency.
+          </p>
+        </div>
+
+        <div class="roadmap-container" id="roadmapList">
+          <!-- Rendered dynamically via js/script.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="courses.html" class="btn btn-secondary">
+            View All 11 Courses
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Courses Grid -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Core Curriculum</span>
+          <h2 class="section-title">Featured Courses</h2>
+          <p class="section-subtitle">
+            Dive directly into individual modules. Each course includes full chapter breakdowns and self-paced quizzes.
+          </p>
+        </div>
+
+        <div class="courses-grid" id="featuredCoursesGrid">
+          <!-- Rendered dynamically via js/script.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="courses.html" class="btn btn-primary">
+            Explore All 11 Courses &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Disclaimer Banner -->
+    <section class="container">
+      <div class="disclaimer-banner">
+        <div class="disclaimer-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="disclaimer-text">
+          <h4>Strict Trading Education Disclaimer</h4>
+          <p>
+            ChartCraft Academy is strictly an educational platform. The information provided is for learning and analytical purposes only and does not constitute financial, investment, or trading advice. Trading financial markets involves substantial risk of loss, and past performance does not guarantee future results. We do not provide trading signals or guaranteed-profit claims.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Answers &amp; Clarity</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Clear, transparent answers about ChartCraft Academy and our educational curriculum.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              Is ChartCraft Academy completely free to use?
+              <span class="faq-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. 100% of our educational curriculum, interactive SVG diagrams, quizzes, and glossary are completely free. You do not need to register, deposit funds, or connect to any brokerage platform.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Does my learning progress persist if I refresh or close my browser?
+              <span class="faq-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. All completed lessons, quiz scores, and your overall academy progress are saved locally inside your browser's localStorage. You can refresh, close your browser, and resume exactly where you left off.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Does ChartCraft Academy provide trading signals or investment advice?
+              <span class="faq-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>No. ChartCraft Academy is strictly an educational platform. We teach market structure, candlestick math, and risk-to-reward frameworks. We never offer trade signals, copy-trading, or investment guarantees.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What are SMC and ICT concepts, and why are they taught here?
+              <span class="faq-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>Smart Money Concepts (SMC) and ICT terminology are modern price action frameworks popular among retail traders. We teach these concepts objectively as educational analytical tools—focusing on liquidity, order imbalances, and market structure—while stripping away conspiracy myths or claims of secret manipulation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I learn on my mobile phone or tablet?
+              <span class="faq-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. ChartCraft Academy is fully responsive across all device sizes, including 360px smartphones, tablets, laptops, and ultra-wide desktop monitors.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I use the quick search and keyboard shortcuts?
+              <span class="faq-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>Press <strong>Ctrl + K</strong> (or <strong>/</strong> on your keyboard) at any time to open the global search modal. You can instantly find any course, specific lesson, concept, or trading glossary term.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+              <polyline points="16 7 22 7 22 13"></polyline>
+            </svg>
+          </div>
+          <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+        </a>
+        <p>
+          "Read the Market. Understand the Structure. Trade with Knowledge."
+        </p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">
+          A lightweight, independent educational platform dedicated to mathematical clarity and price action structure.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="courses.html" class="footer-link">All 11 Courses</a>
+          <a href="#learning-path" class="footer-link">Learning Path</a>
+          <a href="progress.html" class="footer-link">Progress Dashboard</a>
+          <a href="glossary.html" class="footer-link">Trading Glossary</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Core Modules</h4>
+        <div class="footer-links">
+          <a href="course-details.html?course=course-1" class="footer-link">Candlestick Basics</a>
+          <a href="course-details.html?course=course-3" class="footer-link">Support &amp; Resistance</a>
+          <a href="course-details.html?course=course-5" class="footer-link">Market Structure</a>
+          <a href="course-details.html?course=course-6" class="footer-link">Liquidity Concepts</a>
+          <a href="course-details.html?course=course-7" class="footer-link">Smart Money (SMC)</a>
+          <a href="course-details.html?course=course-10" class="footer-link">Fibonacci Framework</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Academy</h4>
+        <div class="footer-links">
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="about.html#disclaimer" class="footer-link">Risk Disclaimer</a>
+          <a href="about.html#contact" class="footer-link">Student Feedback</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        &copy; 2026 ChartCraft Academy. All educational rights reserved.
+      </div>
+      <div>
+        Strictly an Educational Platform • Not Financial Advice
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/progress.js"></script>
+  <script src="js/courses.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Render Roadmap
+      if (typeof renderRoadmap === 'function') {
+        renderRoadmap('roadmapList');
+      }
+
+      // Render 4 Featured Courses
+      const featuredContainer = document.getElementById('featuredCoursesGrid');
+      if (featuredContainer && typeof AcademyCourses !== 'undefined') {
+        const featuredIds = ['course-1', 'course-3', 'course-5', 'course-7'];
+        const featured = AcademyCourses.filter(c => featuredIds.includes(c.id));
+        
+        featuredContainer.innerHTML = featured.map(course => {
+          const totalLessons = course.chapters ? course.chapters.length : 0;
+          const progress = typeof ProgressTracker !== 'undefined'
+            ? ProgressTracker.getCourseProgress(course.id, totalLessons)
+            : { completed: 0, total: totalLessons, percentage: 0 };
+
+          const visualSvg = typeof course.svgPreview === 'function' ? course.svgPreview() : '';
+
+          return `
+            <div class="course-card">
+              <div class="course-card-visual">${visualSvg}</div>
+              <div class="course-card-body">
+                <div class="course-card-badges">
+                  <span class="badge ${course.difficulty.includes('Beginner') ? 'badge-blue' : 'badge-amber'}">${course.difficulty}</span>
+                  <span class="badge badge-teal">${course.category}</span>
+                </div>
+                <h3 class="course-card-title">${escapeHtml(course.title)}</h3>
+                <p class="course-card-desc">${escapeHtml(course.shortDesc)}</p>
+                <div class="course-card-meta">
+                  <span>${totalLessons} Chapters</span>
+                  <span>${course.duration}</span>
+                </div>
+                <div class="course-card-footer">
+                  <div class="progress-label-wrap">
+                    <span>Progress</span>
+                    <span><strong>${progress.percentage}%</strong></span>
+                  </div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: ${progress.percentage}%;"></div>
+                  </div>
+                  <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                    <a href="course-details.html?course=${course.id}" class="btn btn-secondary btn-sm" style="flex: 1;">
+                      Syllabus
+                    </a>
+                    <a href="lessons.html?course=${course.id}&lesson=1" class="btn btn-primary btn-sm" style="flex: 1;">
+                      ${progress.completed > 0 ? 'Continue' : 'Start Course'}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    });
+  </script>
+</body>
+</html>

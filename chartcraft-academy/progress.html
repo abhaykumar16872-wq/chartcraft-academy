@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Dashboard | ChartCraft Academy</title>
+  <meta name="description" content="Track your complete learning progress, completed chapters, quiz scores, and level achievements across ChartCraft Academy.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ChartCraft Academy Home">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+        </div>
+        <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="index.html#learning-path" class="nav-link">Learning Path</a>
+        <a href="progress.html" class="nav-link active">Progress</a>
+        <a href="glossary.html" class="nav-link">Glossary</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <button class="search-trigger" aria-label="Search Academy" title="Search (Ctrl + K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span style="font-size: 0.85rem;">Search</span>
+        </button>
+
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <!-- Populated by script.js -->
+        </button>
+
+        <a href="lessons.html?course=course-1&lesson=1" class="btn btn-primary btn-sm">
+          Resume Learning
+        </a>
+
+        <button class="btn-icon mobile-menu-btn" aria-label="Open mobile menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="courses.html" class="nav-link">All 11 Courses</a>
+    <a href="index.html#learning-path" class="nav-link">Learning Roadmap</a>
+    <a href="progress.html" class="nav-link active">My Progress Dashboard</a>
+    <a href="glossary.html" class="nav-link">Trading Glossary</a>
+    <a href="about.html" class="nav-link">About Academy</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <!-- Header -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.5rem; margin-bottom: 2.5rem;">
+          <div>
+            <span class="section-tag">Student Dashboard</span>
+            <h1 class="section-title">Your Learning Progress</h1>
+            <p class="section-subtitle" style="margin: 0;">
+              Real-time tracker saved locally in your browser. Complete lessons and quizzes to advance your rank.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button id="resetProgressBtn" class="btn btn-secondary btn-sm" style="color: var(--bearish); border-color: rgba(244, 63, 94, 0.3);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              </svg>
+              Reset Progress
+            </button>
+          </div>
+        </div>
+
+        <!-- Overall Progress Hero Card -->
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2.5rem;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; margin-bottom: 1.25rem;">
+            <div>
+              <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--accent-primary); letter-spacing: 0.05em;">
+                Academy Completion
+              </span>
+              <h2 id="overallPctText" style="font-size: 2.8rem; margin: 0.25rem 0;">0%</h2>
+              <p id="overallCountsSub" style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">
+                0 of 0 Lessons Completed
+              </p>
+            </div>
+
+            <!-- Resume Learning Card -->
+            <div id="resumeLearningBox" style="background-color: var(--bg-surface); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); min-width: 280px;">
+              <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-teal); font-weight: 700;">
+                Current Active Course
+              </span>
+              <h4 id="resumeCourseTitle" style="font-size: 1.05rem; margin: 0.35rem 0 0.75rem;">Candlestick Foundations</h4>
+              <a href="lessons.html?course=course-1&lesson=1" id="resumeActionBtn" class="btn btn-primary btn-sm" style="width: 100%;">
+                Resume Learning &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Overall Wide Progress Bar -->
+          <div class="progress-bar-container" style="height: 12px;">
+            <div id="overallProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Quick Stats Cards Grid -->
+        <div class="stats-cards-grid">
+          <div class="stat-card">
+            <div class="stat-card-label">Courses Completed</div>
+            <div class="stat-card-value" id="statCoursesCompleted">0/11</div>
+            <div class="stat-card-sub" id="statCoursesSub">0 courses finished 100%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">Lessons Completed</div>
+            <div class="stat-card-value" id="statLessonsCompleted">0</div>
+            <div class="stat-card-sub" id="statLessonsSub">Across all 11 modules</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">Quizzes Completed</div>
+            <div class="stat-card-value" id="statQuizzesTaken">0</div>
+            <div class="stat-card-sub" id="statQuizAvg">Average Score: 0%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">Estimated Study Time</div>
+            <div class="stat-card-value" id="statEstimatedTime">0h 0m</div>
+            <div class="stat-card-sub">Knowledge logged</div>
+          </div>
+        </div>
+
+        <!-- Tiered Level Progress Breakdown (Beginner, Intermediate, Advanced) -->
+        <div style="margin-bottom: 3rem;">
+          <h2 style="font-size: 1.5rem; margin-bottom: 1.25rem;">Skill Level Mastery</h2>
+          
+          <div class="progress-levels-grid">
+            <!-- Beginner Card -->
+            <div class="level-card">
+              <div class="level-header">
+                <div>
+                  <span class="badge badge-blue">Tier 1</span>
+                  <h3 style="font-size: 1.2rem; margin-top: 0.35rem;">Beginner Foundations</h3>
+                </div>
+                <strong id="beginnerPct" style="font-size: 1.35rem; color: var(--accent-primary);">0%</strong>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+                Candlestick Basics, Patterns, and Support &amp; Resistance.
+              </p>
+              <div class="progress-bar-container">
+                <div id="beginnerBar" class="progress-bar-fill" style="width: 0%;"></div>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);" id="beginnerCount">0/27 Lessons</div>
+            </div>
+
+            <!-- Intermediate Card -->
+            <div class="level-card">
+              <div class="level-header">
+                <div>
+                  <span class="badge badge-teal">Tier 2</span>
+                  <h3 style="font-size: 1.2rem; margin-top: 0.35rem;">Intermediate Structure</h3>
+                </div>
+                <strong id="interPct" style="font-size: 1.35rem; color: var(--accent-teal);">0%</strong>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+                Supply &amp; Demand, Market Structure (BOS/CHOCH), and Fibonacci.
+              </p>
+              <div class="progress-bar-container">
+                <div id="interBar" class="progress-bar-fill" style="width: 0%;"></div>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);" id="interCount">0/34 Lessons</div>
+            </div>
+
+            <!-- Advanced Card -->
+            <div class="level-card">
+              <div class="level-header">
+                <div>
+                  <span class="badge badge-amber">Tier 3</span>
+                  <h3 style="font-size: 1.2rem; margin-top: 0.35rem;">Advanced Institutional</h3>
+                </div>
+                <strong id="advPct" style="font-size: 1.35rem; color: var(--warning);">0%</strong>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+                Liquidity Sweeps, SMC, ICT Frameworks, MTF, and Complete TA Strategy.
+              </p>
+              <div class="progress-bar-container">
+                <div id="advBar" class="progress-bar-fill" style="width: 0%;"></div>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);" id="advCount">0/50 Lessons</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Breakdown Table -->
+        <div>
+          <h2 style="font-size: 1.5rem; margin-bottom: 1.25rem;">Course Breakdown</h2>
+
+          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden;">
+            <div id="courseBreakdownList" style="display: flex; flex-direction: column;">
+              <!-- Populated dynamically via script -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+              <polyline points="16 7 22 7 22 13"></polyline>
+            </svg>
+          </div>
+          <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+        </a>
+        <p>"Read the Market. Understand the Structure. Trade with Knowledge."</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="courses.html" class="footer-link">All 11 Courses</a>
+          <a href="progress.html" class="footer-link">Progress</a>
+          <a href="glossary.html" class="footer-link">Glossary</a>
+          <a href="about.html" class="footer-link">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Learning Path</h4>
+        <div class="footer-links">
+          <a href="index.html#learning-path" class="footer-link">11-Level Roadmap</a>
+          <a href="courses.html" class="footer-link">Beginner Tier</a>
+          <a href="courses.html" class="footer-link">Intermediate Tier</a>
+          <a href="courses.html" class="footer-link">Advanced Tier</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ethics</h4>
+        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+          Educational use only. Never trade with capital you cannot afford to lose.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ChartCraft Academy. All rights reserved.</div>
+      <div>Real-Time Educational Progress Tracking</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/progress.js"></script>
+  <script src="js/courses.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDashboard();
+
+      // Reset Button Handler
+      document.getElementById('resetProgressBtn').addEventListener('click', () => {
+        if (confirm("Are you sure you want to reset all your learning progress and quiz scores? This cannot be undone.")) {
+          ProgressTracker.resetAllProgress();
+          showToast("Progress has been completely reset.", "warning");
+          renderDashboard();
+        }
+      });
+
+      function renderDashboard() {
+        if (typeof ProgressTracker === 'undefined' || typeof AcademyCourses === 'undefined') return;
+
+        const overall = ProgressTracker.getOverallProgress(AcademyCourses);
+        document.getElementById('overallPctText').textContent = `${overall.percentage}%`;
+        document.getElementById('overallCountsSub').textContent = `${overall.completedLessons} of ${overall.totalLessons} Lessons Completed (${overall.completedCourses} of ${overall.totalCourses} Courses Finished)`;
+        document.getElementById('overallProgressBar').style.width = `${overall.percentage}%`;
+
+        // Stat cards
+        document.getElementById('statCoursesCompleted').textContent = `${overall.completedCourses}/${overall.totalCourses}`;
+        document.getElementById('statCoursesSub').textContent = `${overall.completedCourses} courses at 100%`;
+
+        document.getElementById('statLessonsCompleted').textContent = overall.completedLessons;
+        document.getElementById('statLessonsSub').textContent = `Out of ${overall.totalLessons} total lessons`;
+
+        // Quiz stats
+        const quizStats = ProgressTracker.getAllQuizStats();
+        document.getElementById('statQuizzesTaken').textContent = quizStats.totalQuizzes;
+        document.getElementById('statQuizAvg').textContent = `Average Score: ${quizStats.averageScore}%`;
+
+        // Approximate hours learned (approx 7 min per completed lesson)
+        const totalMinutes = overall.completedLessons * 7;
+        const hours = Math.floor(totalMinutes / 60);
+        const mins = totalMinutes % 60;
+        document.getElementById('statEstimatedTime').textContent = `${hours}h ${mins}m`;
+
+        // Last Visited / Bookmark
+        const lastVisited = ProgressTracker.getLastVisited();
+        const activeCourse = lastVisited 
+          ? (AcademyCourses.find(c => c.id === lastVisited.courseId) || AcademyCourses[0])
+          : AcademyCourses[0];
+        const activeLessonNum = lastVisited ? lastVisited.lessonNum : 1;
+
+        document.getElementById('resumeCourseTitle').textContent = activeCourse.title;
+        document.getElementById('resumeActionBtn').href = `lessons.html?course=${activeCourse.id}&lesson=${activeLessonNum}`;
+        document.getElementById('resumeActionBtn').innerHTML = `Resume Chapter ${activeLessonNum} &rarr;`;
+
+        // Level Breakdowns
+        const beg = ProgressTracker.getLevelProgress('Beginner', AcademyCourses);
+        document.getElementById('beginnerPct').textContent = `${beg.percentage}%`;
+        document.getElementById('beginnerBar').style.width = `${beg.percentage}%`;
+        document.getElementById('beginnerCount').textContent = `${beg.completed}/${beg.total} Lessons`;
+
+        const inter = ProgressTracker.getLevelProgress('Intermediate', AcademyCourses);
+        document.getElementById('interPct').textContent = `${inter.percentage}%`;
+        document.getElementById('interBar').style.width = `${inter.percentage}%`;
+        document.getElementById('interCount').textContent = `${inter.completed}/${inter.total} Lessons`;
+
+        const adv = ProgressTracker.getLevelProgress('Advanced', AcademyCourses);
+        document.getElementById('advPct').textContent = `${adv.percentage}%`;
+        document.getElementById('advBar').style.width = `${adv.percentage}%`;
+        document.getElementById('advCount').textContent = `${adv.completed}/${adv.total} Lessons`;
+
+        // Course Breakdown List
+        const listContainer = document.getElementById('courseBreakdownList');
+        listContainer.innerHTML = AcademyCourses.map((course, idx) => {
+          const totalChapters = course.chapters ? course.chapters.length : 0;
+          const prog = ProgressTracker.getCourseProgress(course.id, totalChapters);
+
+          return `
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1.25rem 1.75rem; border-bottom: 1px solid var(--border-subtle); gap: 1rem;">
+              <div style="display: flex; align-items: center; gap: 1rem; min-width: 260px;">
+                <span style="font-weight: 800; font-size: 0.95rem; color: var(--accent-primary); width: 1.5rem;">
+                  ${String(idx + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">${escapeHtml(course.title)}</h4>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">
+                    ${course.difficulty} • ${totalChapters} Chapters
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bar in row -->
+              <div style="flex: 1; max-width: 300px; min-width: 160px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem; color: var(--text-muted);">
+                  <span>Progress</span>
+                  <strong>${prog.percentage}% (${prog.completed}/${totalChapters})</strong>
+                </div>
+                <div class="progress-bar-container" style="height: 6px;">
+                  <div class="progress-bar-fill" style="width: ${prog.percentage}%;"></div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <a href="course-details.html?course=${course.id}" class="btn btn-secondary btn-sm">
+                  Syllabus
+                </a>
+                <a href="lessons.html?course=${course.id}&lesson=1" class="btn btn-primary btn-sm">
+                  ${prog.completed > 0 ? 'Continue' : 'Start'}
+                </a>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    });
+  </script>
+</body>
+</html>

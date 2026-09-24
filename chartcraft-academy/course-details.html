@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Details | ChartCraft Academy</title>
+  <meta name="description" content="Detailed syllabus, chapter breakdown, and interactive lesson list for ChartCraft Academy technical analysis courses.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ChartCraft Academy Home">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+        </div>
+        <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link active">Courses</a>
+        <a href="index.html#learning-path" class="nav-link">Learning Path</a>
+        <a href="progress.html" class="nav-link">Progress</a>
+        <a href="glossary.html" class="nav-link">Glossary</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <button class="search-trigger" aria-label="Search Academy" title="Search (Ctrl + K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span style="font-size: 0.85rem;">Search</span>
+          <span class="search-shortcut">Ctrl K</span>
+        </button>
+
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <!-- Populated by script.js -->
+        </button>
+
+        <a href="lessons.html?course=course-1&lesson=1" class="btn btn-primary btn-sm">
+          Start Learning
+        </a>
+
+        <button class="btn-icon mobile-menu-btn" aria-label="Open mobile menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="courses.html" class="nav-link active">All 11 Courses</a>
+    <a href="index.html#learning-path" class="nav-link">Learning Roadmap</a>
+    <a href="progress.html" class="nav-link">My Progress Dashboard</a>
+    <a href="glossary.html" class="nav-link">Trading Glossary</a>
+    <a href="about.html" class="nav-link">About Academy</a>
+  </div>
+
+  <main>
+    <!-- Course Detail Header Banner -->
+    <section class="course-detail-header">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="courses.html">Courses</a>
+          <span>/</span>
+          <span id="breadcrumbCourseTitle" style="color: var(--text-primary); font-weight: 600;">Course</span>
+        </nav>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 2rem;">
+          <div style="max-width: 750px;">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <span id="courseDifficultyBadge" class="badge badge-blue">Beginner</span>
+              <span id="courseCategoryBadge" class="badge badge-teal">Foundations</span>
+            </div>
+            <h1 id="courseTitle" style="margin-bottom: 0.75rem;">Course Title</h1>
+            <p id="courseDesc" style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.6;">
+              Course short description...
+            </p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; min-width: 220px;">
+            <a href="#" id="coursePrimaryActionBtn" class="btn btn-primary" style="padding: 0.85rem 1.75rem; font-size: 1rem;">
+              Start Course &rarr;
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">
+              Self-paced • Instant browser save
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Syllabus Section -->
+    <section class="section">
+      <div class="container course-detail-grid">
+        <!-- Left: Chapter List -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+            <h2 style="font-size: 1.5rem;">Curriculum Syllabus</h2>
+            <span id="chapterCountLabel" style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">
+              0 Chapters
+            </span>
+          </div>
+
+          <div class="chapter-accordion-list" id="chaptersContainer">
+            <!-- Rendered dynamically by script -->
+          </div>
+        </div>
+
+        <!-- Right: Course Stats & Educational Notice -->
+        <aside>
+          <div class="detail-card">
+            <h3 style="margin-bottom: 1.25rem;">Course Overview</h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Estimated Duration</span>
+                <strong id="sideDuration">45 min</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Total Lessons</span>
+                <strong id="sideTotalLessons">7</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Format</span>
+                <strong>Concepts + SVG + Quiz</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Prerequisites</span>
+                <strong>None (Zero to Hero)</strong>
+              </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div style="margin-bottom: 1.75rem;">
+              <div class="progress-label-wrap" style="margin-bottom: 0.5rem;">
+                <span style="font-weight: 600;">Your Completion</span>
+                <span id="sideProgressText"><strong>0%</strong></span>
+              </div>
+              <div class="progress-bar-container">
+                <div id="sideProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <div style="background-color: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--accent-primary);">Educational Guarantee</h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                All concepts are explained mathematically without commercial bias. Complete quizzes at the end of each chapter to validate understanding.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+              <polyline points="16 7 22 7 22 13"></polyline>
+            </svg>
+          </div>
+          <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+        </a>
+        <p>"Read the Market. Understand the Structure. Trade with Knowledge."</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="courses.html" class="footer-link">Courses</a>
+          <a href="progress.html" class="footer-link">Progress</a>
+          <a href="glossary.html" class="footer-link">Glossary</a>
+          <a href="about.html" class="footer-link">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Academy</h4>
+        <div class="footer-links">
+          <a href="about.html" class="footer-link">About ChartCraft</a>
+          <a href="about.html#disclaimer" class="footer-link">Risk Disclaimer</a>
+          <a href="about.html#contact" class="footer-link">Support &amp; Feedback</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Disclaimer</h4>
+        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+          Educational use only. Trading financial assets involves significant risk.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ChartCraft Academy. All rights reserved.</div>
+      <div>Pure Technical Analysis Education</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/progress.js"></script>
+  <script src="js/courses.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Parse courseId from query parameter e.g. ?course=course-1
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get('course') || 'course-1';
+      
+      const course = getCourseById(courseId);
+      if (!course) return;
+
+      // Update Page Title & Metadata
+      document.title = `${course.title} | ChartCraft Academy`;
+      document.getElementById('breadcrumbCourseTitle').textContent = course.title;
+      document.getElementById('courseTitle').textContent = course.title;
+      document.getElementById('courseDesc').textContent = course.shortDesc;
+      document.getElementById('courseDifficultyBadge').textContent = course.difficulty;
+      document.getElementById('courseCategoryBadge').textContent = course.category;
+
+      document.getElementById('sideDuration').textContent = course.duration;
+      const totalLessons = course.chapters ? course.chapters.length : 0;
+      document.getElementById('sideTotalLessons').textContent = totalLessons;
+      document.getElementById('chapterCountLabel').textContent = `${totalLessons} Chapters`;
+
+      // Get user progress
+      const progress = ProgressTracker.getCourseProgress(course.id, totalLessons);
+      document.getElementById('sideProgressText').innerHTML = `<strong>${progress.percentage}%</strong> (${progress.completed}/${totalLessons})`;
+      document.getElementById('sideProgressBar').style.width = `${progress.percentage}%`;
+
+      // Update Primary Action Button
+      const primaryBtn = document.getElementById('coursePrimaryActionBtn');
+      // Find first incomplete lesson or start with lesson 1
+      let nextLessonNum = 1;
+      for (let i = 1; i <= totalLessons; i++) {
+        if (!ProgressTracker.isLessonCompleted(course.id, i)) {
+          nextLessonNum = i;
+          break;
+        }
+      }
+      primaryBtn.href = `lessons.html?course=${course.id}&lesson=${nextLessonNum}`;
+      primaryBtn.innerHTML = progress.completed > 0 
+        ? `Continue Chapter ${nextLessonNum} &rarr;` 
+        : `Start Course &rarr;`;
+
+      // Render Chapters List
+      const container = document.getElementById('chaptersContainer');
+      container.innerHTML = course.chapters.map((ch, idx) => {
+        const isDone = ProgressTracker.isLessonCompleted(course.id, ch.id);
+        const padNum = String(ch.id).padStart(2, '0');
+
+        return `
+          <a href="lessons.html?course=${course.id}&lesson=${ch.id}" class="chapter-item">
+            <div class="chapter-left">
+              <div class="chapter-num">${padNum}</div>
+              <div class="chapter-title-group">
+                <h4>${escapeHtml(ch.title)}</h4>
+                <div class="chapter-meta">
+                  ${ch.difficulty || course.difficulty} • ${ch.duration}
+                </div>
+              </div>
+            </div>
+            <div class="chapter-status">
+              ${isDone ? `
+                <span class="status-indicator completed" title="Completed">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span style="color: var(--bullish); font-weight: 600; font-size: 0.85rem;">Completed</span>
+              ` : `
+                <span class="status-indicator not-started" title="Not Started"></span>
+                <span style="color: var(--text-muted); font-size: 0.85rem;">Not Started</span>
+              `}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="margin-left: 0.5rem;">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+          </a>
+        `;
+      }).join('');
+    });
+  </script>
+</body>
+</html>

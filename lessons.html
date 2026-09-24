@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson Player | ChartCraft Academy</title>
+  <meta name="description" content="Interactive technical analysis lesson player with custom vector diagrams, chapter syllabus, and practice quizzes.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ChartCraft Academy Home">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+        </div>
+        <span>ChartCraft <span style="color: var(--accent-teal); font-weight: 400;">Academy</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="progress.html" class="nav-link">Progress</a>
+        <a href="glossary.html" class="nav-link">Glossary</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Mobile Sidebar Toggle -->
+        <button id="toggleMobileSidebarBtn" class="btn btn-secondary btn-sm" style="display: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <span>Chapters</span>
+        </button>
+
+        <button class="search-trigger" aria-label="Search Academy" title="Search (Ctrl + K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span style="font-size: 0.85rem;">Search</span>
+        </button>
+
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <!-- Populated by script.js -->
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3-Column Responsive Lesson Layout -->
+  <div class="lesson-page-wrapper">
+    
+    <!-- LEFT COLUMN: Syllabus Navigation -->
+    <aside class="lesson-sidebar-left" id="lessonSidebarLeft">
+      <div class="syllabus-header">
+        <a href="#" id="sidebarBackToCourseLink" class="syllabus-course-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Back to Course Overview
+        </a>
+        <h3 id="sidebarCourseTitle" class="syllabus-title">Course Title</h3>
+        <div class="progress-label-wrap" style="margin-bottom: 0.35rem;">
+          <span style="font-size: 0.75rem;">Course Progress</span>
+          <span id="sidebarProgressPct" style="font-size: 0.75rem; font-weight: 700;">0%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div id="sidebarProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="syllabus-list" id="sidebarChaptersList">
+        <!-- Rendered dynamically -->
+      </div>
+    </aside>
+
+    <!-- CENTER COLUMN: Lesson Content, SVG Diagram, Takeaways, Quiz -->
+    <main class="lesson-main-content">
+      <div class="breadcrumb" style="margin-bottom: 1rem;">
+        <a href="courses.html">Courses</a>
+        <span>/</span>
+        <a href="#" id="contentBreadcrumbCourse">Course Title</a>
+        <span>/</span>
+        <span id="contentBreadcrumbLesson" style="color: var(--text-primary); font-weight: 600;">Chapter 1</span>
+      </div>
+
+      <div class="lesson-meta-bar">
+        <div>
+          <span id="lessonChapterBadge" class="badge badge-teal" style="margin-right: 0.5rem;">Chapter 01</span>
+          <span id="lessonDifficultyBadge" class="badge badge-blue">Beginner</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span id="lessonDurationText">8 min</span>
+        </div>
+      </div>
+
+      <h1 id="lessonMainTitle" class="lesson-headline">Lesson Title</h1>
+
+      <!-- Concept Explanation -->
+      <section class="lesson-section-box">
+        <h2 class="lesson-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+          The Core Concept
+        </h2>
+        <p id="lessonConceptText" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-primary);">
+          Concept explanation...
+        </p>
+
+        <!-- Custom Educational SVG Diagram Card -->
+        <div class="lesson-diagram-card">
+          <div id="lessonDiagramContainer" style="width: 100%;">
+            <!-- Rendered SVG -->
+          </div>
+          <div class="diagram-legend">
+            <div class="legend-item">
+              <span class="legend-dot" style="background-color: var(--bullish);"></span>
+              <span>Bullish / Demand</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background-color: var(--bearish);"></span>
+              <span>Bearish / Supply</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background-color: var(--warning);"></span>
+              <span>Liquidity / Key Reaction</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deep Dive Breakdown -->
+        <div style="margin-top: 1.75rem;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Structural Breakdown</h3>
+          <ul id="lessonDeepDiveList" style="list-style: disc; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-secondary);">
+            <!-- Populated via script -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- Key Takeaways Box -->
+      <div class="takeaways-box">
+        <h4>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; vertical-align: middle; margin-right: 4px;">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Key Takeaways
+        </h4>
+        <ul id="lessonTakeawaysList">
+          <!-- Populated via script -->
+        </ul>
+      </div>
+
+      <!-- Common Mistakes Callout -->
+      <div class="mistakes-box">
+        <h4>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; vertical-align: middle; margin-right: 4px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          Common Mistakes to Avoid
+        </h4>
+        <p id="lessonMistakesText" style="margin: 0; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+          Mistake description...
+        </p>
+      </div>
+
+      <!-- Practice Quick Check Quiz -->
+      <section class="quiz-container" id="lessonQuizSection">
+        <div class="quiz-header">
+          <span class="quiz-badge">Practice Check</span>
+          <span id="quizScoreBadge" style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
+            1 Question • Instant Feedback
+          </span>
+        </div>
+
+        <h3 id="quizQuestionText" class="quiz-question-text">
+          Practice Question loading...
+        </h3>
+
+        <div class="quiz-options-list" id="quizOptionsList">
+          <!-- Options rendered dynamically -->
+        </div>
+
+        <!-- Immediate Explanation Feedback Box -->
+        <div id="quizFeedbackBox" class="quiz-feedback-box">
+          <strong id="quizFeedbackTitle">Correct!</strong>
+          <p id="quizFeedbackExplanation">Detailed explanation of the concept.</p>
+        </div>
+      </section>
+
+      <!-- Bottom Navigation Bar -->
+      <div class="lesson-nav-bar">
+        <button id="prevLessonBtn" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Previous Chapter
+        </button>
+
+        <button id="markCompleteBtn" class="btn btn-teal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span id="markCompleteBtnText">Mark as Complete</span>
+        </button>
+
+        <button id="nextLessonBtn" class="btn btn-primary">
+          Next Chapter
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN: Lesson Meta, Course Stats, Quick Jump -->
+    <aside class="lesson-sidebar-right">
+      <div class="right-card">
+        <h4>Learning Progress</h4>
+        <div class="progress-label-wrap" style="margin-bottom: 0.35rem;">
+          <span id="rightProgressLabel">Completed</span>
+          <span id="rightProgressPct"><strong>0%</strong></span>
+        </div>
+        <div class="progress-bar-container">
+          <div id="rightProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="right-card">
+        <h4>Quick Actions</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="#lessonQuizSection" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: flex-start;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            Jump to Quick Check
+          </a>
+          <a href="glossary.html" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: flex-start;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            Open Trading Glossary
+          </a>
+          <a href="progress.html" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: flex-start;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 20V10"></path>
+              <path d="M12 20V4"></path>
+              <path d="M6 20v-6"></path>
+            </svg>
+            My Progress Dashboard
+          </a>
+        </div>
+      </div>
+
+      <div class="right-card" style="background-color: var(--bg-surface);">
+        <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Study Tip</h4>
+        <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+          Study one concept at a time. Trace the vector diagrams and attempt the quick check before advancing to the next chapter.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/progress.js"></script>
+  <script src="js/courses.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Responsive Mobile Sidebar Toggle
+      const mobileToggleBtn = document.getElementById('toggleMobileSidebarBtn');
+      const leftSidebar = document.getElementById('lessonSidebarLeft');
+      
+      function checkWidth() {
+        if (window.innerWidth <= 900) {
+          mobileToggleBtn.style.display = 'inline-flex';
+        } else {
+          mobileToggleBtn.style.display = 'none';
+          leftSidebar.classList.remove('mobile-open');
+        }
+      }
+      checkWidth();
+      window.addEventListener('resize', checkWidth);
+
+      mobileToggleBtn.addEventListener('click', () => {
+        leftSidebar.classList.toggle('mobile-open');
+      });
+
+      // Parse Query Params
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get('course') || 'course-1';
+      const lessonNum = parseInt(urlParams.get('lesson'), 10) || 1;
+
+      // Bookmark last visited
+      ProgressTracker.setLastVisited(courseId, lessonNum);
+
+      // Fetch lesson data
+      const lessonData = getLesson(courseId, lessonNum);
+      const { course, chapter, totalChapters, nextNum, prevNum } = lessonData;
+
+      // Update Page Metadata
+      document.title = `${chapter.title} | ${course.title} | ChartCraft Academy`;
+
+      // Sidebar Header
+      document.getElementById('sidebarBackToCourseLink').href = `course-details.html?course=${course.id}`;
+      document.getElementById('sidebarCourseTitle').textContent = course.title;
+      
+      // Breadcrumbs
+      const breadcrumbCourse = document.getElementById('contentBreadcrumbCourse');
+      breadcrumbCourse.textContent = course.title;
+      breadcrumbCourse.href = `course-details.html?course=${course.id}`;
+      document.getElementById('contentBreadcrumbLesson').textContent = `Chapter ${chapter.id}: ${chapter.title}`;
+
+      // Lesson Header
+      document.getElementById('lessonChapterBadge').textContent = `Chapter ${String(chapter.id).padStart(2, '0')}`;
+      document.getElementById('lessonDifficultyBadge').textContent = chapter.difficulty || course.difficulty;
+      document.getElementById('lessonDurationText').textContent = chapter.duration;
+      document.getElementById('lessonMainTitle').textContent = chapter.title;
+
+      // Content
+      document.getElementById('lessonConceptText').textContent = chapter.concept;
+
+      // Render SVG Diagram
+      const diagramContainer = document.getElementById('lessonDiagramContainer');
+      if (typeof chapter.diagram === 'function') {
+        diagramContainer.innerHTML = chapter.diagram();
+      } else if (typeof course.svgPreview === 'function') {
+        diagramContainer.innerHTML = course.svgPreview();
+      }
+
+      // Deep Dive
+      const deepDiveList = document.getElementById('lessonDeepDiveList');
+      if (chapter.deepDive && chapter.deepDive.length > 0) {
+        deepDiveList.innerHTML = chapter.deepDive.map(pt => `<li>${escapeHtml(pt)}</li>`).join('');
+      } else {
+        deepDiveList.innerHTML = `<li>Deconstruct the visual diagram and identify key structural points.</li>`;
+      }
+
+      // Takeaways
+      const takeawaysList = document.getElementById('lessonTakeawaysList');
+      if (chapter.takeaways && chapter.takeaways.length > 0) {
+        takeawaysList.innerHTML = chapter.takeaways.map(t => `<li>${escapeHtml(t)}</li>`).join('');
+      }
+
+      // Common Mistakes
+      document.getElementById('lessonMistakesText').textContent = chapter.commonMistakes || 'Ignoring higher-timeframe market structure.';
+
+      // Render Quiz
+      renderQuiz(course.id, chapter.id, chapter.quiz);
+
+      // Update Navigation Buttons
+      const prevBtn = document.getElementById('prevLessonBtn');
+      if (prevNum) {
+        prevBtn.onclick = () => { window.location.href = `lessons.html?course=${course.id}&lesson=${prevNum}`; };
+      } else {
+        prevBtn.disabled = true;
+        prevBtn.style.opacity = '0.5';
+        prevBtn.style.cursor = 'not-allowed';
+      }
+
+      const nextBtn = document.getElementById('nextLessonBtn');
+      if (nextNum) {
+        nextBtn.onclick = () => { window.location.href = `lessons.html?course=${course.id}&lesson=${nextNum}`; };
+      } else {
+        nextBtn.innerHTML = `Course Complete! &rarr;`;
+        nextBtn.onclick = () => { window.location.href = `course-details.html?course=${course.id}`; };
+      }
+
+      // Complete Button State
+      const completeBtn = document.getElementById('markCompleteBtn');
+      const completeBtnText = document.getElementById('markCompleteBtnText');
+
+      function updateCompleteBtnState() {
+        const isCompleted = ProgressTracker.isLessonCompleted(course.id, chapter.id);
+        if (isCompleted) {
+          completeBtn.className = 'btn btn-secondary';
+          completeBtnText.textContent = 'Completed ✓ (Click to Undo)';
+        } else {
+          completeBtn.className = 'btn btn-teal';
+          completeBtnText.textContent = 'Mark as Complete';
+        }
+        updateProgressUI();
+      }
+
+      completeBtn.addEventListener('click', () => {
+        const isNowComplete = ProgressTracker.toggleLessonCompletion(course.id, chapter.id);
+        showToast(
+          isNowComplete ? `Chapter ${chapter.id} marked as complete! 🎉` : `Chapter ${chapter.id} marked as incomplete.`,
+          isNowComplete ? 'info' : 'warning'
+        );
+        updateCompleteBtnState();
+        renderSidebarSyllabus();
+      });
+
+      updateCompleteBtnState();
+      renderSidebarSyllabus();
+      updateProgressUI();
+
+      // Progress UI updater
+      function updateProgressUI() {
+        const prog = ProgressTracker.getCourseProgress(course.id, totalChapters);
+        document.getElementById('sidebarProgressPct').textContent = `${prog.percentage}%`;
+        document.getElementById('sidebarProgressBar').style.width = `${prog.percentage}%`;
+
+        document.getElementById('rightProgressPct').innerHTML = `<strong>${prog.percentage}%</strong>`;
+        document.getElementById('rightProgressBar').style.width = `${prog.percentage}%`;
+        document.getElementById('rightProgressLabel').textContent = `${prog.completed}/${totalChapters} Chapters`;
+      }
+
+      // Render Syllabus in Left Sidebar
+      function renderSidebarSyllabus() {
+        const sidebarList = document.getElementById('sidebarChaptersList');
+        sidebarList.innerHTML = course.chapters.map(ch => {
+          const isDone = ProgressTracker.isLessonCompleted(course.id, ch.id);
+          const isActive = ch.id === chapter.id;
+          const padNum = String(ch.id).padStart(2, '0');
+
+          return `
+            <a href="lessons.html?course=${course.id}&lesson=${ch.id}" class="syllabus-item-btn ${isActive ? 'active' : ''}">
+              <span class="status-indicator ${isDone ? 'completed' : 'not-started'}" style="width: 1.25rem; height: 1.25rem; font-size: 0.75rem;">
+                ${isDone ? `✓` : ''}
+              </span>
+              <div style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                <span style="font-weight: 700; color: var(--accent-primary); margin-right: 4px;">${padNum}</span>
+                <span>${escapeHtml(ch.title)}</span>
+              </div>
+            </a>
+          `;
+        }).join('');
+      }
+
+      // Render Quiz
+      function renderQuiz(cId, chId, quiz) {
+        if (!quiz) return;
+        document.getElementById('quizQuestionText').textContent = quiz.question;
+
+        const optionsList = document.getElementById('quizOptionsList');
+        const feedbackBox = document.getElementById('quizFeedbackBox');
+        const feedbackTitle = document.getElementById('quizFeedbackTitle');
+        const feedbackExp = document.getElementById('quizFeedbackExplanation');
+
+        const letters = ['A', 'B', 'C', 'D'];
+        optionsList.innerHTML = quiz.options.map((opt, i) => `
+          <button class="quiz-option-btn" data-index="${i}">
+            <span class="option-marker">${letters[i]}</span>
+            <span>${escapeHtml(opt)}</span>
+          </button>
+        `).join('');
+
+        // Check if previously taken
+        const prevResult = ProgressTracker.getQuizResult(cId, chId);
+        if (prevResult) {
+          highlightQuizAnswer(quiz.correctIndex, quiz.correctIndex, quiz.explanation, false);
+        }
+
+        optionsList.querySelectorAll('.quiz-option-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const selectedIndex = parseInt(btn.getAttribute('data-index'), 10);
+            const isCorrect = selectedIndex === quiz.correctIndex;
+
+            ProgressTracker.saveQuizResult(cId, chId, isCorrect ? 1 : 0, 1);
+            highlightQuizAnswer(selectedIndex, quiz.correctIndex, quiz.explanation, true);
+
+            if (isCorrect) {
+              // Automatically mark as complete if not already
+              if (!ProgressTracker.isLessonCompleted(cId, chId)) {
+                ProgressTracker.markLessonComplete(cId, chId);
+                updateCompleteBtnState();
+                renderSidebarSyllabus();
+                showToast("Great job! Chapter marked as complete.", "info");
+              }
+            }
+          });
+        });
+
+        function highlightQuizAnswer(selectedIdx, correctIdx, explanation, showNotice = true) {
+          const buttons = optionsList.querySelectorAll('.quiz-option-btn');
+          buttons.forEach((b, i) => {
+            b.disabled = true;
+            b.classList.remove('correct', 'wrong', 'selected');
+            if (i === correctIdx) {
+              b.classList.add('correct');
+            } else if (i === selectedIdx && selectedIdx !== correctIdx) {
+              b.classList.add('wrong');
+            }
+          });
+
+          feedbackBox.className = 'quiz-feedback-box ' + (selectedIdx === correctIdx ? 'correct' : 'wrong');
+          feedbackTitle.textContent = selectedIdx === correctIdx ? 'Correct! 🎯' : 'Incorrect. Study the Explanation:';
+          feedbackExp.textContent = explanation;
+
+          if (showNotice) {
+            feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
